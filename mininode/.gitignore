@@ -8,3 +8,5 @@ libmininode.la
 mininode.lo
 mininode.o
 stamp-h1
+mininode.h
+mininode.c

@@ -32,15 +32,14 @@ enum node_type {
 void rb_add_method(VALUE, ID, NODE *, int);
 NODE *rb_node_newnode(enum node_type, VALUE, VALUE, VALUE);
 
-extern int NODE_MEMO;
-extern int NODE_METHOD;
-extern int NODE_FBODY;
-extern int NODE_CFUNC;
-extern int NODE_CALL;
-extern int NODE_FCALL;
-extern int NODE_SPLAT;
-extern int NODE_LIT;
-extern int NODE_BLOCK_PASS;
+#ruby <<END
+require 'node_names'
+
+NODE_NAMES.each do |name|
+puts "extern int NODE_#{name};"
+end
+nil
+END
 
 void Init_mininode();
 
