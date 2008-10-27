@@ -36,12 +36,16 @@ NODE *rb_node_newnode(enum node_type, VALUE, VALUE, VALUE);
 require 'node_names'
 
 NODE_NAMES.each do |name|
-puts "extern int NODE_#{name};"
+puts "#define NODE_#{name} get_NODE_#{name}()"
+end
+
+puts
+
+NODE_NAMES.each do |name|
+puts "int get_NODE_#{name}();"
 end
 nil
 END
-
-void Init_mininode();
 
 #define NOEX_PUBLIC 0x0
 

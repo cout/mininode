@@ -1,14 +1,6 @@
 #include "mininode.h"
 #include <string.h>
 
-#ruby <<END
-require 'node_names'
-NODE_NAMES.each do |name|
-  puts "int NODE_#{name} = 0;"
-end
-nil
-END
-
 char const * ruby_node_name(int node);
 
 static int node_value(char const * name)
@@ -24,13 +16,23 @@ static int node_value(char const * name)
   }
 }
 
-void Init_mininode()
-{
 #ruby <<END
-  NODE_NAMES.each do |name|
-    puts "  NODE_#{name} = node_value(\"NODE_#{name}\");"
-  end
-  nil
-END
+require 'node_names'
+NODE_NAMES.each do |name|
+  puts <<-END
+static int NODE_#{name}_ = -1;
+
+int get_NODE_#{name}()
+{
+  if(NODE_#{name}_ == -1)
+  {
+    NODE_#{name}_ = node_value("NODE_#{name}");
+  }
+
+  return NODE_#{name}_;
 }
+  END
+end
+nil
+END
 
