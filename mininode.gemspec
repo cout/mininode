@@ -16,7 +16,7 @@ A drop-in replacement for node.h for use with newer versions of YARV.
     'COPYING',
     'README',
 
-    # Autoconf
+    # Autoconf/automake
     'bootstrap',
     'configure.ac',
     'configure',
@@ -29,6 +29,8 @@ A drop-in replacement for node.h for use with newer versions of YARV.
     'post-automake.rb',
     'ruby.ac',
     'aclocal.m4',
+    'mininode/config.h.in',
+    'libtool',
 
     # Makefiles
     'Makefile.am',
@@ -37,8 +39,10 @@ A drop-in replacement for node.h for use with newer versions of YARV.
     'mininode/Makefile.in',
 
     # C++ source files
-    'mininode/*c',
-    'mininode/*.h',
+    'mininode/mininode.c.rpp',
+    'mininode/mininode.h.rpp',
+    'mininode/rubypp.rb',
+    'mininode/node_names.rb',
   ]
   s.files = patterns.collect { |p| Dir.glob(p) }.flatten
 
