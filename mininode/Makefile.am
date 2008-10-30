@@ -15,3 +15,6 @@ mininode.h: mininode.h.rpp
 mininode.c: mininode.c.rpp
 	$(RUBY) rubypp.rb mininode.c.rpp mininode.c
 
+EXTRA_DIST = mininode.h.rpp mininode.c.rpp rubypp.rb
+BUILT_SOURCES = mininode.c mininode.h
+
