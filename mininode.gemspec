@@ -31,6 +31,7 @@ A drop-in replacement for node.h for use with newer versions of YARV.
     'aclocal.m4',
     'mininode/config.h.in',
     'libtool',
+    'ltmain.sh',
 
     # Makefiles
     'Makefile.am',
